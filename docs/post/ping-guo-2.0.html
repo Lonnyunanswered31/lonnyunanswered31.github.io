@@ -5,7 +5,65 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
-    
+    <style>
+/* 1. 头像右侧“科技岛”卡片样式 */
+.custom-brand-card {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 8px 16px !important;
+    background: var(--color-canvas-subtle, #f6f8fa) !important;
+    border: 2px solid var(--color-border-default, #d0d7de) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: var(--color-fg-default, #24292f) !important;
+    text-decoration: none !important;
+    margin-left: 12px !important;
+}
+
+/* 2. 下方网站介绍文字的独立卡片样式 */
+.welcome-card {
+    padding: 20px 24px;
+    background: var(--color-canvas-subtle, #f6f8fa);
+    border: 2px solid var(--color-border-default, #d0d7de);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    line-height: 1.6;
+    color: var(--color-fg-default, #24292f);
+}
+
+/* 手机端适配优化 */
+@media (max-width: 600px) {
+    .custom-brand-card { padding: 6px 12px !important; font-size: 16px !important; border-radius: 12px !important; }
+    .welcome-card { padding: 14px 16px; border-radius: 16px; font-size: 14px; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let avatarImg = document.getElementById("avatarImg") || document.querySelector(".avatar");
+    if (avatarImg && !document.getElementById("customBrandCard")) {
+        let brandCard = document.createElement("a");
+        brandCard.id = "customBrandCard";
+        brandCard.href = "https://tghaocc.github.io";
+        brandCard.className = "custom-brand-card";
+        brandCard.innerText = "科技岛";
+        avatarImg.parentNode.insertBefore(brandCard, avatarImg.nextSibling);
+    }
+
+    let contentDiv = document.getElementById("content");
+    if (contentDiv && !contentDiv.querySelector(".welcome-card")) {
+        for (let child of contentDiv.children) {
+            if (child.tagName === "DIV" && !child.classList.contains("SideNav") && !child.classList.contains("welcome-card")) {
+                child.classList.add("welcome-card");
+                break;
+            }
+        }
+    }
+});
+</script>
     <link rel="icon" href="https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
