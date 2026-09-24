@@ -21,50 +21,15 @@
 </head>
 <style>
 body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
-
-/* 头部导航栏卡片边框样式 */
-#header{
-    display:flex;
-    padding: 16px 20px;
-    background: var(--color-canvas-subtle, #f6f8fa);
-    border: 2px solid var(--color-border-default, #d0d7de);
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 24px;
-    align-items: center;
-}
-
-/* 独立显式的网站介绍卡片样式 */
-.welcome-card {
-    padding: 20px 24px;
-    background: var(--color-canvas-subtle, #f6f8fa);
-    border: 2px solid var(--color-border-default, #d0d7de);
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 24px;
-    line-height: 1.6;
-    color: var(--color-fg-default, #24292f);
-}
-
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
 #footer {margin-top:64px; text-align: center;font-size: small;}
 
 </style>
 
 <style>
-.avatar {transition: 0.8s;width:52px;height:52px;object-fit: cover;}
+.avatar {transition: 0.8s;width:64px;height:64px;object-fit: cover;}
 .avatar:hover{transform: scale(1.15) rotate(360deg);}
-
-.title-left{display: flex; align-items: center;}
-.title-left a{
-    color: inherit;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    margin-left: 14px;
-    display: inline-block !important;
-}
-
+.title-left a{color:inherit;text-decoration:none;vertical-align: bottom;font-size:40px;font-weight: bold;font-family:Monaco;margin-left:8px;}
 .title-right{display:flex;margin:auto 0 0 auto;}
 .title-right button{margin-right:8px;padding:16px;}
 .title-right .circle{padding: 14px 16px;}
@@ -78,11 +43,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 .listLabels object{max-height:16px;max-width:24px;}
 
 @media (max-width: 600px) {
-    body {padding: 12px;}
-    .avatar {width:44px;height:44px;}
-    .blogTitle{display:inline-block !important; font-size: 18px !important;}
-    #header{padding: 10px 14px; border-radius: 16px;}
-    .welcome-card{padding: 14px 16px; border-radius: 16px; font-size: 14px;}
+    body {padding: 8px;}
+    .avatar {width:40px;height:40px;}
+    .blogTitle{display:none;}
     #buttonRSS{display:none;}
     .LabelTime{display:none;}
 }
@@ -115,8 +78,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<!-- 明确加上 class="welcome-card"，确保 CSS 样式准确应用 -->
-<div class="welcome-card">欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。</div>
+<div style="margin-bottom: 16px;">欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。</div>
 <nav class="SideNav border">
 <a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/ping-guo-3.html">
     <div class="d-flex flex-items-center">
@@ -169,7 +131,6 @@ let themeSettings={
     "light": ["light","sun","#ff5000","github-light"],
     "auto": ["auto","sync","","preferred-color-scheme"]
 };
-changeTheme(...themeSettings[localStorage.getItem("meek_theme") || "light"]);
 function changeTheme(mode, icon, color, utheme){
     document.documentElement.setAttribute("data-color-mode",mode);
     document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
@@ -189,11 +150,11 @@ function utterancesTheme(theme){
     const iframe=document.getElementsByClassName('utterances-frame')[0];
     iframe.contentWindow.postMessage(message,'https://utteranc.es');
 }
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
 console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
 </script>
 
 <script>
-Date.now(); // 简单防止缓存
 document.getElementById("pathSearch").setAttribute("d",IconList["search"]);
 document.getElementById("pathRSS").setAttribute("d",IconList["rss"]);
 iconTOP=document.getElementsByClassName("svgTop1");
@@ -205,5 +166,11 @@ for(var i=0;i<iconTOP.length;i++){
 for(var i=0;i<iconPost.length;i++){
     iconPost[i].setAttribute("d",IconList["post"]);
 }
+
+
+
+
 </script>
+
+
 </html>
