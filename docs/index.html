@@ -12,81 +12,95 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. 修复顶部 Flex 容器，保证放大镜与刷新图标完全平行对称 */
+/* 🌟 1. Header 统一为相对定位 */
+#header {
+    position: relative !important;
+}
+
 .subnav {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
-    box-sizing: border-box !important;
-    position: relative !important;
 }
 
-.subnav-right, .subnav-right a, #buttonSearch, #buttonTheme {
+/* 🌟 2. 强行锁定放大镜与月亮图标（绝对垂直居中对齐） */
+.subnav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#buttonSearch, #buttonTheme, a.btn-invisible {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 36px !important;
-    line-height: 36px !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
     margin: 0 !important;
-    padding: 0 4px !important;
+    border: none !important;
+    background: none !important;
     vertical-align: middle !important;
+    box-sizing: border-box !important;
 }
 
-/* 🌟 2. 左上角品牌胶囊卡片 */
+#buttonSearch svg, #buttonTheme svg {
+    width: 20px !important;
+    height: 20px !important;
+    fill: currentColor !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+/* 🌟 3. 彻底解决点击放大镜展开搜索框时挤压公告的问题（设为下拉悬浮层） */
+.subnav-search, div[search] {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 99999 !important;
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    box-sizing: border-box !important;
+}
+
+/* 🌟 4. 左上角品牌胶囊卡片 */
 .pro-brand-capsule {
     position: relative;
     overflow: hidden;
     display: inline-flex !important;
     align-items: center;
-    padding: 8px 18px !important;
+    padding: 6px 14px !important;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 240, 255, 0.95) 100%) !important;
-    border: 2px solid rgba(147, 112, 219, 0.45) !important;
+    border: 1.5px solid rgba(147, 112, 219, 0.45) !important;
     border-radius: 30px !important;
-    box-shadow: 0 10px 28px rgba(138, 43, 226, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 8px 24px rgba(138, 43, 226, 0.12) !important;
     text-decoration: none !important;
-    margin: 4px 0 !important;
-    backdrop-filter: blur(16px);
-}
-
-.pro-brand-capsule::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(60deg, transparent 35%, rgba(255, 255, 255, 0.85) 50%, transparent 65%);
-    transform: translateX(-100%);
-    animation: glaringSweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes glaringSweep {
-    0% { transform: translateX(-100%); }
-    30% { transform: translateX(100%); }
-    100% { transform: translateX(100%); }
 }
 
 .pro-brand-capsule img, .pro-brand-capsule .avatar {
-    width: 42px !important;
-    height: 42px !important;
-    border-radius: 12px !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
     object-fit: cover;
-    margin-right: 10px !important;
-    position: relative;
-    z-index: 1;
+    margin-right: 8px !important;
 }
 
 .pro-brand-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.2;
-    position: relative;
-    z-index: 1;
+    line-height: 1.15;
 }
 
 .pro-brand-title {
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-weight: 800 !important;
     background: linear-gradient(135deg, #7b2cbf 0%, #3a86ff 100%);
     -webkit-background-clip: text;
@@ -94,55 +108,35 @@
 }
 
 .pro-brand-subtitle {
-    font-size: 9px !important;
+    font-size: 8px !important;
     font-weight: 700 !important;
     color: #6c757d !important;
-    letter-spacing: 2px;
-    margin-top: 2px;
+    letter-spacing: 1.5px;
 }
 
-/* 🌟 3. 独立系统公告卡片（独立于 Header，完全横屏 100% 撑满） */
+/* 🌟 5. 系统公告卡片（独立挂载在 Header 下方，强行满屏宽度） */
 .pro-notice-card {
     position: relative !important;
     overflow: hidden !important;
     display: block !important;
-    width: 100% !important;
+    width: calc(100vw - 24px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     box-sizing: border-box !important;
     background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #151c2f 100%) !important;
     border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-    border-radius: 20px !important;
-    padding: 18px 20px !important;
-    margin: 16px 0 24px 0 !important;
-    box-shadow: 0 12px 35px rgba(30, 27, 75, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
+    border-radius: 18px !important;
+    padding: 16px 18px !important;
+    margin: 16px 0 20px 0 !important;
+    box-shadow: 0 12px 35px rgba(30, 27, 75, 0.3) !important;
     color: #f1f5f9 !important;
-    clear: both !important;
-}
-
-.pro-notice-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
-    transform: translateX(-100%);
-    animation: cardSweep 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes cardSweep {
-    0% { transform: translateX(-100%); }
-    40% { transform: translateX(100%); }
-    100% { transform: translateX(100%); }
 }
 
 .pro-notice-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 2;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 .pro-notice-badge1 {
@@ -150,9 +144,8 @@
     color: #fff;
     font-size: 11px;
     font-weight: 700;
-    padding: 3px 10px;
+    padding: 3px 9px;
     border-radius: 6px;
-    letter-spacing: 0.5px;
 }
 
 .pro-notice-badge2 {
@@ -165,24 +158,13 @@
 }
 
 .pro-notice-body {
-    font-size: 13.5px !important;
-    line-height: 1.8 !important;
+    font-size: 13px !important;
+    line-height: 1.75 !important;
     color: #cbd5e1 !important;
-    position: relative;
-    z-index: 2;
 }
 
 .subTitle {
     display: none !important;
-}
-
-@media (max-width: 600px) {
-    .pro-brand-capsule { padding: 6px 12px !important; border-radius: 18px !important; }
-    .pro-brand-capsule img, .pro-brand-capsule .avatar { width: 36px !important; height: 36px !important; margin-right: 8px !important; }
-    .pro-brand-title { font-size: 15px !important; }
-    .pro-brand-subtitle { font-size: 8.5px !important; }
-    .pro-notice-card { padding: 14px 16px !important; }
-    .pro-notice-body { font-size: 13px !important; }
 }
 </style>
 
@@ -206,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
         capsule.appendChild(textDiv);
     }
 
-    // 2. 将公告卡片直接挂载到 #header 外部后方（保证结构完全隔离，点击搜索绝不遮挡）
+    // 2. 注入系统公告（精确插入在 header 标签外部正下方）
     if (!document.getElementById("proNoticeCard")) {
         let noticeCard = document.createElement("div");
         noticeCard.id = "proNoticeCard";
@@ -223,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         let headerContainer = document.getElementById("header") || document.querySelector(".header");
         if (headerContainer && headerContainer.parentNode) {
-            headerContainer.after(noticeCard);
+            headerContainer.insertAdjacentElement('afterend', noticeCard);
         } else {
             document.body.prepend(noticeCard);
         }
