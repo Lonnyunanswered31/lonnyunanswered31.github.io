@@ -12,7 +12,7 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. 左上角品牌胶囊卡片 */
+/* 🌟 1. 左上角品牌胶囊 */
 .pro-brand-capsule {
     position: relative;
     overflow: hidden;
@@ -25,26 +25,7 @@
     box-shadow: 0 10px 28px rgba(138, 43, 226, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
     text-decoration: none !important;
     backdrop-filter: blur(16px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin-bottom: 12px;
-}
-
-.pro-brand-capsule::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(60deg, transparent 35%, rgba(255, 255, 255, 0.85) 50%, transparent 65%);
-    transform: translateX(-100%);
-    animation: glaringSweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes glaringSweep {
-    0% { transform: translateX(-100%); }
-    30% { transform: translateX(100%); }
-    100% { transform: translateX(100%); }
 }
 
 .pro-brand-capsule img, .pro-brand-capsule .avatar {
@@ -54,17 +35,12 @@
     object-fit: cover;
     margin-right: 12px !important;
     border: 1px solid rgba(147, 112, 219, 0.2);
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.1);
-    position: relative;
-    z-index: 1;
 }
 
 .pro-brand-text {
     display: flex;
     flex-direction: column;
     line-height: 1.25;
-    position: relative;
-    z-index: 1;
 }
 
 .pro-brand-title {
@@ -73,7 +49,6 @@
     background: linear-gradient(135deg, #7b2cbf 0%, #3a86ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: 0.8px;
 }
 
 .pro-brand-subtitle {
@@ -85,46 +60,31 @@
     text-transform: uppercase;
 }
 
-/* 🌟 2. 占满整个小横屏宽度的系统公告卡片 */
+/* 🌟 2. 强力破界：让系统公告卡片 100% 占满整个屏幕横向宽度 */
 .pro-notice-card {
-    position: relative;
-    overflow: hidden;
-    width: 100% !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    width: 100vw !important;
     box-sizing: border-box !important;
     background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #151c2f 100%) !important;
-    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-    border-radius: 20px !important;
-    padding: 22px 24px !important;
-    margin: 8px 0 24px 0 !important;
-    box-shadow: 0 12px 35px rgba(30, 27, 75, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
+    border-top: 1.5px solid rgba(167, 139, 250, 0.4) !important;
+    border-bottom: 1.5px solid rgba(167, 139, 250, 0.4) !important;
+    border-radius: 0 !important;
+    padding: 20px 20px !important;
+    margin-top: 10px !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 12px 35px rgba(30, 27, 75, 0.3) !important;
     color: #f1f5f9 !important;
-}
-
-.pro-notice-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
-    transform: translateX(-100%);
-    animation: cardSweep 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes cardSweep {
-    0% { transform: translateX(-100%); }
-    40% { transform: translateX(100%); }
-    100% { transform: translateX(100%); }
 }
 
 .pro-notice-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 12px;
-    position: relative;
-    z-index: 2;
+    margin-bottom: 10px;
 }
 
 .pro-notice-badge1 {
@@ -134,8 +94,6 @@
     font-weight: 700;
     padding: 3px 10px;
     border-radius: 6px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
 }
 
 .pro-notice-badge2 {
@@ -151,29 +109,16 @@
     font-size: 14px !important;
     line-height: 1.85 !important;
     color: #cbd5e1 !important;
-    position: relative;
-    z-index: 2;
-    font-weight: 400 !important;
 }
 
 /* 隐藏原先系统自带的冗余欢迎语 */
 .subTitle {
     display: none !important;
 }
-
-@media (max-width: 600px) {
-    .pro-brand-capsule { padding: 8px 16px !important; border-radius: 22px !important; }
-    .pro-brand-capsule img, .pro-brand-capsule .avatar { width: 42px !important; height: 42px !important; margin-right: 10px !important; }
-    .pro-brand-title { font-size: 18px !important; }
-    .pro-brand-subtitle { font-size: 9.5px !important; }
-    .pro-notice-card { padding: 18px 20px !important; }
-    .pro-notice-body { font-size: 13.5px !important; }
-}
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. 将原头像平滑转换为左上角精美品牌胶囊（不碰其他任何图标）
     let originalAvatar = document.getElementById("avatarImg") || document.querySelector(".avatar");
     if (originalAvatar && !document.getElementById("proBrandCapsule")) {
         let capsule = document.createElement("a");
@@ -192,13 +137,12 @@ document.addEventListener("DOMContentLoaded", function() {
         
         let parent = originalAvatar.parentNode;
         parent.insertBefore(capsule, originalAvatar);
-        originalAvatar.remove(); // 移除旧头像
+        originalAvatar.remove();
         
         capsule.appendChild(imgElem);
         capsule.appendChild(textDiv);
     }
 
-    // 2. 在品牌胶囊下方插入宽度拉满的系统公告卡片
     let capsuleElem = document.getElementById("proBrandCapsule");
     if (capsuleElem && !document.getElementById("proNoticeCard")) {
         let noticeCard = document.createElement("div");
@@ -216,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function() {
         capsuleElem.parentNode.insertBefore(noticeCard, capsuleElem.nextSibling);
     }
 
-    // 3. 清理多余的旧欢迎语文本
     document.querySelectorAll(".subTitle").forEach(el => el.style.display = "none");
 });
 </script>
