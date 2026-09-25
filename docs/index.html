@@ -12,7 +12,28 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. 左上角品牌胶囊卡片（带明显扫光） */
+/* 🌟 1. 修复 Gmeek 顶部导航及右上角图标定位 */
+.subnav {
+    position: relative !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding-right: 80px !important; /* 预留右上角图标空间 */
+    box-sizing: border-box !important;
+}
+
+.subnav-right {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    z-index: 999 !important;
+}
+
+/* 🌟 2. 左上角品牌胶囊卡片（带明显扫光） */
 .pro-brand-capsule {
     position: relative;
     overflow: hidden;
@@ -86,10 +107,12 @@
     text-transform: uppercase;
 }
 
-/* 🌟 2. 完美复刻图6风格的高定系统公告卡片 */
+/* 🌟 3. 系统公告卡片（优化横屏铺满 100% 宽度） */
 .pro-notice-card {
     position: relative;
     overflow: hidden;
+    width: 100% !important;
+    box-sizing: border-box !important;
     background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #151c2f 100%) !important;
     border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
     border-radius: 20px !important;
@@ -155,7 +178,7 @@
     font-weight: 400 !important;
 }
 
-/* 隐藏原先系统自带的难看纯文本欢迎语 */
+/* 隐藏原先系统自带的副标题 */
 .subTitle {
     display: none !important;
 }
@@ -190,9 +213,9 @@ document.addEventListener("DOMContentLoaded", function() {
         capsule.appendChild(textDiv);
     }
 
-    // 2. 强制在品牌胶囊下方插入高定系统公告卡片
-    let capsuleElem = document.getElementById("proBrandCapsule");
-    if (capsuleElem && !document.getElementById("proNoticeCard")) {
+    // 2. 将系统公告卡片精准插入到 subnav 导航区域下方
+    let subnavElem = document.querySelector(".subnav");
+    if (subnavElem && !document.getElementById("proNoticeCard")) {
         let noticeCard = document.createElement("div");
         noticeCard.id = "proNoticeCard";
         noticeCard.className = "pro-notice-card";
@@ -205,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。
             </div>
         `;
-        capsuleElem.parentNode.insertBefore(noticeCard, capsuleElem.nextSibling);
+        subnavElem.parentNode.insertBefore(noticeCard, subnavElem.nextSibling);
     }
 });
 </script>
