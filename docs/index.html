@@ -12,7 +12,7 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 品牌胶囊卡片：完美复刻图5紫罗兰渐变与夺目扫光 */
+/* 🌟 1. 左上角品牌胶囊卡片（带明显扫光） */
 .pro-brand-capsule {
     position: relative;
     overflow: hidden;
@@ -46,12 +46,6 @@
     0% { transform: translateX(-100%); }
     30% { transform: translateX(100%); }
     100% { transform: translateX(100%); }
-}
-
-.pro-brand-capsule:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 14px 35px rgba(138, 43, 226, 0.22) !important;
-    border-color: rgba(147, 112, 219, 0.8) !important;
 }
 
 .pro-brand-capsule img, .pro-brand-capsule .avatar {
@@ -92,38 +86,78 @@
     text-transform: uppercase;
 }
 
-/* 🌟 欢迎词重构：仿图6系统公告大卡片风格（温馨高定渐变色） */
-.subTitle {
+/* 🌟 2. 完美复刻图6风格的高定系统公告卡片 */
+.pro-notice-card {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e293b 100%) !important;
-    border: 1.5px solid rgba(167, 139, 250, 0.35) !important;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #151c2f 100%) !important;
+    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
     border-radius: 20px !important;
-    padding: 22px 24px !important;
-    margin: 18px 0 !important;
-    box-shadow: 0 14px 35px rgba(30, 27, 75, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+    padding: 20px 22px !important;
+    margin: 16px 0 24px 0 !important;
+    box-shadow: 0 12px 35px rgba(30, 27, 75, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
     color: #f1f5f9 !important;
-    font-weight: 500 !important;
-    font-size: 14.5px !important;
-    line-height: 1.85 !important;
 }
 
-/* 公告卡片内部流光特效 */
-.subTitle::before {
+.pro-notice-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-    animation: cardSweep 6s ease-in-out infinite;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
+    transform: translateX(-100%);
+    animation: cardSweep 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes cardSweep {
-    0% { left: -100%; }
-    50% { left: 100%; }
-    100% { left: 100%; }
+    0% { transform: translateX(-100%); }
+    40% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+}
+
+.pro-notice-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.pro-notice-badge1 {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
+}
+
+.pro-notice-badge2 {
+    background: rgba(255, 255, 255, 0.12);
+    color: #c084fc;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.pro-notice-body {
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    color: #cbd5e1 !important;
+    position: relative;
+    z-index: 2;
+    font-weight: 400 !important;
+}
+
+/* 隐藏原先系统自带的难看纯文本欢迎语 */
+.subTitle {
+    display: none !important;
 }
 
 @media (max-width: 600px) {
@@ -131,13 +165,14 @@
     .pro-brand-capsule img, .pro-brand-capsule .avatar { width: 44px !important; height: 44px !important; margin-right: 12px !important; }
     .pro-brand-title { font-size: 18px !important; }
     .pro-brand-subtitle { font-size: 10px !important; }
-    .subTitle { padding: 16px 18px !important; font-size: 13.5px !important; }
+    .pro-notice-card { padding: 16px 18px !important; }
+    .pro-notice-body { font-size: 13.5px !important; }
 }
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. 自动生成品牌胶囊
+    // 1. 转换左上角头像为品牌胶囊
     let avatarImg = document.getElementById("avatarImg") || document.querySelector(".avatar");
     if (avatarImg && !document.getElementById("proBrandCapsule")) {
         let capsule = document.createElement("a");
@@ -155,14 +190,22 @@ document.addEventListener("DOMContentLoaded", function() {
         capsule.appendChild(textDiv);
     }
 
-    // 2. 自动为欢迎词注入类似图6的“系统公告”精美头部标签
-    let subTitleElem = document.querySelector(".subTitle");
-    if (subTitleElem && !document.getElementById("noticeBadgeBox")) {
-        let badgeBox = document.createElement("div");
-        badgeBox.id = "noticeBadgeBox";
-        badgeBox.style.cssText = "display: flex; align-items: center; margin-bottom: 10px; gap: 8px;";
-        badgeBox.innerHTML = '<span style="background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 6px; letter-spacing: 0.5px; box-shadow: 0 2px 6px rgba(124,58,237,0.4);">📢 系统公告</span><span style="background: rgba(255,255,255,0.1); color: #c084fc; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px;">平台指南</span>';
-        subTitleElem.insertBefore(badgeBox, subTitleElem.firstChild);
+    // 2. 强制在品牌胶囊下方插入高定系统公告卡片
+    let capsuleElem = document.getElementById("proBrandCapsule");
+    if (capsuleElem && !document.getElementById("proNoticeCard")) {
+        let noticeCard = document.createElement("div");
+        noticeCard.id = "proNoticeCard";
+        noticeCard.className = "pro-notice-card";
+        noticeCard.innerHTML = `
+            <div class="pro-notice-header">
+                <span class="pro-notice-badge1">📢 系统公告</span>
+                <span class="pro-notice-badge2">平台指南</span>
+            </div>
+            <div class="pro-notice-body">
+                欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。
+            </div>
+        `;
+        capsuleElem.parentNode.insertBefore(noticeCard, capsuleElem.nextSibling);
     }
 });
 </script>
@@ -170,9 +213,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。">
+<meta name="description" content="欢迎来到科技岛！">
 <meta property="og:title" content="科技岛 - 免费苹果ID共享_美区日区AppleID与小火箭账号获取">
-<meta property="og:description" content="欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。">
+<meta property="og:description" content="欢迎来到科技岛！">
 <meta property="og:type" content="blog">
 <meta property="og:url" content="https://tghaocc.github.io">
 <meta property="og:image" content="https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png">
@@ -238,7 +281,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div style="margin-bottom: 16px;">欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。</div>
+<div style="margin-bottom: 16px;">欢迎来到科技岛！</div>
 <nav class="SideNav border">
 <a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/ping-guo-3.html">
     <div class="d-flex flex-items-center">
